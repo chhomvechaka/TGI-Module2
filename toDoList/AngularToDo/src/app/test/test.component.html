@@ -1,0 +1,78 @@
+<!--row class-->
+
+<div class ="container-fluid"><!---->
+  <div class="row" ><!---->
+    <div class="col-md-3" style="background-color: #f5a9cb; height:93vh"><!---->
+
+        <mat-card class="mt-3" style="background-color:#F8D3E2">
+          <form [formGroup]='todoForm'>
+
+            <mat-form-field appearance="outline" style="width:100% " >
+
+              <input formControlName="item" matInput placeholder="Add Task Name">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+            <button (click)="addTask()" mat-raised-button [disabled]="todoForm.invalid" style="color:white ;background-color:#661044">Add </button>
+
+          </form>
+        </mat-card>
+
+
+</div><!--colmd-->
+<!--0-->
+<div class="col-md-9"  style="background-image:linear-gradient(to right, rgba(255,0,0,0), #661044)">
+<div cdkDropListGroup>
+
+
+  <div class="row">
+  <div class="col-md-4">
+  <div class="example-container">
+    <h2>TODO</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="tasks"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of tasks" cdkDrag>{{item.description}}</div>
+    </div>
+  </div>
+</div>
+  <!--1-->
+  <div class="col-md-4">
+  <div class="example-container">
+    <h2>INPROGRESS</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="inprogress"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item.description}}</div>
+    </div>
+  </div>
+</div>
+    <!--2-->
+    <div class="col-md-4">
+    <div class="example-container">
+      <h2>DONE</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="done"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!--3-->
+</div>
+<!---->
+</div>
+</div>
+</div>
+
+
